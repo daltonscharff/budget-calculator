@@ -20,5 +20,3 @@ export async function getItems(): Promise<Item[]> {
   const itemList = itemSnapshot.docs.map((doc) => doc.data() as Item);
   return itemList;
 }
-
-getItems().then((items: Item[]) => console.log(items));
