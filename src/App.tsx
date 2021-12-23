@@ -7,8 +7,9 @@ function App() {
   const [itemsByType, setItemsByType] = useState(new Map<string, Item[]>());
   const [budget, setBudget] = useState(0);
   const [selectedItems, setSelectedItems] = useState(
-    {} as Map<string, Item | null>
+    new Map<string, Item | null>()
   );
+  const [priceRange, setPriceRange] = useState({ low: 0, high: 0 });
 
   useEffect(() => {
     (async () => {
@@ -30,14 +31,36 @@ function App() {
     setItemsByType(itemsByType);
   }, [items]);
 
+  useEffect(() => {
+    const items = Array.from(selectedItems.values());
+    const low = items.reduce(
+      (total, item) => (item ? total + item.lowPrice : total),
+      0
+    );
+    const high = items.reduce(
+      (total, item) => (item ? total + item.highPrice : total),
+      0
+    );
+    setPriceRange({ low, high });
+  }, [selectedItems]);
+
   return (
     <div className="App">
-      {items.map((item, i) => (
-        <div key={item.type + item.name + i}>
-          type: {item.type}, name: {item.name}, lowPrice: {item.lowPrice},
-          highPrice: {item.highPrice}
-        </div>
-      ))}
+      {Array.from(itemsByType.keys()).map((type, index) => {
+        const items = itemsByType.get(type);
+
+        return (
+          <div key={type + index}>
+            <h2>{type}</h2>
+            {items?.map((item, index) => (
+              <p key={item.type + item.name + index}>
+                type: {item.type}, name: {item.name}, lowPrice: {item.lowPrice},
+                highPrice: {item.highPrice}
+              </p>
+            ))}
+          </div>
+        );
+      })}
     </div>
   );
 }
