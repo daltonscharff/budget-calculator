@@ -38,6 +38,7 @@ function App() {
       }
     }
     setItemsByType(itemsByType);
+    setSelectedItems(new Map<string, Item | null>());
   }, [items]);
 
   useEffect(() => {
