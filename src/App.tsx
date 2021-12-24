@@ -53,14 +53,29 @@ function App() {
           <div key={type + index}>
             <h2>{type}</h2>
             {items?.map((item, index) => (
-              <p key={item.type + item.name + index}>
-                type: {item.type}, name: {item.name}, lowPrice: {item.lowPrice},
-                highPrice: {item.highPrice}
-              </p>
+              <div>
+                <label
+                  htmlFor={type + index}
+                  onClick={() => {
+                    setSelectedItems(new Map(selectedItems).set(type, item));
+                  }}
+                >
+                  <input
+                    type="radio"
+                    id={type + index}
+                    name={type}
+                    value={index}
+                  />
+                  {item.name}: ${item.lowPrice} - ${item.highPrice}
+                </label>
+              </div>
             ))}
           </div>
         );
       })}
+      <h3>
+        Estimated Total: ${priceRange.low} - ${priceRange.high}
+      </h3>
     </div>
   );
 }
