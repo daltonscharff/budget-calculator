@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/budget-calculator/static/css/main.073c9b0a.css",
-    "main.js": "/budget-calculator/static/js/main.f7ed1aaa.js",
+    "main.css": "/budget-calculator/static/css/main.cb40f026.css",
+    "main.js": "/budget-calculator/static/js/main.1686d9a6.js",
     "static/js/787.37ff4028.chunk.js": "/budget-calculator/static/js/787.37ff4028.chunk.js",
     "index.html": "/budget-calculator/index.html",
-    "main.073c9b0a.css.map": "/budget-calculator/static/css/main.073c9b0a.css.map",
-    "main.f7ed1aaa.js.map": "/budget-calculator/static/js/main.f7ed1aaa.js.map",
+    "main.cb40f026.css.map": "/budget-calculator/static/css/main.cb40f026.css.map",
+    "main.1686d9a6.js.map": "/budget-calculator/static/js/main.1686d9a6.js.map",
     "787.37ff4028.chunk.js.map": "/budget-calculator/static/js/787.37ff4028.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.f7ed1aaa.js"
+    "static/css/main.cb40f026.css",
+    "static/js/main.1686d9a6.js"
   ]
 }
