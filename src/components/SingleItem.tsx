@@ -1,18 +1,11 @@
 import { Item } from "../store";
+import displayCurrency from "../utils/displayCurrency";
 
 type Props = {
   item: Item;
   onSelect: (item: Item) => void;
   selected: boolean;
 };
-
-function displayCurrency(price: number): string {
-  price /= 100;
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-  }).format(price);
-}
 
 function SingleItem({ item, onSelect, selected }: Props) {
   return (
