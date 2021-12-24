@@ -5,7 +5,7 @@ import "./App.css";
 function App() {
   const [items, setItems] = useState([] as Item[]);
   const [itemsByType, setItemsByType] = useState(new Map<string, Item[]>());
-  const [budget, setBudget] = useState(0);
+  const [budget, setBudget] = useState("");
   const [selectedItems, setSelectedItems] = useState(
     new Map<string, Item | null>()
   );
@@ -55,6 +55,12 @@ function App() {
 
   return (
     <div className="App">
+      <input
+        type="number"
+        placeholder="Budget"
+        value={budget}
+        onChange={(event) => setBudget(event.target.value)}
+      />
       {Array.from(itemsByType.keys()).map((type, index) => {
         const items = itemsByType.get(type);
 
