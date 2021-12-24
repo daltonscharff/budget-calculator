@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getItems, Item } from "./store";
+import SingleItem from "./components/SingleItem";
 import "./App.css";
 
 function App() {
@@ -68,24 +69,22 @@ function App() {
         return (
           <div key={type + index}>
             <h2>{type}</h2>
-            {items?.map((item, index) => (
-              <div>
-                <label
-                  htmlFor={type + index}
-                  onClick={() => {
-                    setSelectedItems(new Map(selectedItems).set(type, item));
-                  }}
-                >
-                  <input
-                    type="radio"
-                    id={type + index}
-                    name={type}
-                    value={index}
+            {items?.map((item, index) => {
+              const selected = selectedItems.get(type) === item;
+              return (
+                <div>
+                  <SingleItem
+                    item={item}
+                    selected={selected}
+                    onSelect={(item: Item) => {
+                      setSelectedItems(
+                        new Map(selectedItems).set(type, selected ? null : item)
+                      );
+                    }}
                   />
-                  {item.name}: ${item.lowPrice} - ${item.highPrice}
-                </label>
-              </div>
-            ))}
+                </div>
+              );
+            })}
           </div>
         );
       })}
