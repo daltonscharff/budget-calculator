@@ -14,7 +14,16 @@ function App() {
   useEffect(() => {
     (async () => {
       const items = await getItems();
-      setItems(items);
+      const hashList = new Map<string, boolean>();
+      const filteredItems: Item[] = [];
+      for (let item of items) {
+        const hash = `${item.type}${item.name}${item.lowPrice}${item.highPrice}`;
+        if (!hashList.has(hash)) {
+          hashList.set(hash, true);
+          filteredItems.push(item);
+        }
+      }
+      setItems(filteredItems);
     })();
   }, []);
 
