@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 import { getItems, Item } from "./store";
-import SingleItem from "./components/SingleItem";
 import "./App.css";
+import GroupedItems from "./components/GroupedItems";
 
 function App() {
   const [items, setItems] = useState([] as Item[]);
   const [itemsByType, setItemsByType] = useState(new Map<string, Item[]>());
   const [budget, setBudget] = useState("");
-  const [selectedItems, setSelectedItems] = useState(
-    new Map<string, Item | null>()
-  );
+  const [selectedItems, setSelectedItems] = useState(new Map<string, Item>());
   const [priceRange, setPriceRange] = useState({ low: 0, high: 0 });
+
+  const onItemSelect = (item: Item) => {};
 
   useEffect(() => {
     (async () => {
@@ -39,7 +39,7 @@ function App() {
       }
     }
     setItemsByType(itemsByType);
-    setSelectedItems(new Map<string, Item | null>());
+    setSelectedItems(new Map<string, Item>());
   }, [items]);
 
   useEffect(() => {
@@ -56,38 +56,48 @@ function App() {
   }, [selectedItems]);
 
   return (
-    <div className="App">
+    <div className="container mx-auto px-4">
       <input
         type="number"
         placeholder="Budget"
         value={budget}
         onChange={(event) => setBudget(event.target.value)}
       />
-      {Array.from(itemsByType.keys()).map((type, index) => {
-        const items = itemsByType.get(type);
+      <div className="flex flex-col gap-8">
+        {Array.from(itemsByType.keys()).map((type, index) => {
+          const items = itemsByType.get(type) || [];
 
-        return (
-          <div key={type + index}>
-            <h2>{type}</h2>
-            {items?.map((item, index) => {
-              const selected = selectedItems.get(type) === item;
-              return (
-                <div>
-                  <SingleItem
-                    item={item}
-                    selected={selected}
-                    onSelect={(item: Item) => {
-                      setSelectedItems(
-                        new Map(selectedItems).set(type, selected ? null : item)
-                      );
-                    }}
-                  />
-                </div>
-              );
-            })}
-          </div>
-        );
-      })}
+          return (
+            <GroupedItems
+              type={type}
+              items={items}
+              selectedItem={selectedItems.get(type)}
+            />
+          );
+
+          // return (
+          //   <div key={type + index}>
+          //     <h2>{type}</h2>
+          //     {items?.map((item, index) => {
+          //       const selected = selectedItems.get(type) === item;
+          //       return (
+          //         <div>
+          //           <SingleItem
+          //             item={item}
+          //             selected={selected}
+          //             onSelect={(item: Item) => {
+          //               setSelectedItems(
+          //                 new Map(selectedItems).set(type, selected ? null : item)
+          //               );
+          //             }}
+          //           />
+          //         </div>
+          //       );
+          //     })}
+          //   </div>
+          // );
+        })}
+      </div>
       <h3>
         Estimated Total: ${priceRange.low} - ${priceRange.high}
       </h3>
