@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getItems, Item } from "./store";
-import "./App.css";
 import GroupedItems from "./components/GroupedItems";
+import "./App.css";
 
 function App() {
   const [items, setItems] = useState([] as Item[]);
@@ -10,7 +10,16 @@ function App() {
   const [selectedItems, setSelectedItems] = useState(new Map<string, Item>());
   const [priceRange, setPriceRange] = useState({ low: 0, high: 0 });
 
-  const onItemSelect = (item: Item) => {};
+  const handleItemSelect = (item: Item) => {
+    const isSelected = selectedItems.get(item.type) === item;
+    const selected = new Map(selectedItems);
+    if (isSelected) {
+      selected.delete(item.type);
+    } else {
+      selected.set(item.type, item);
+    }
+    setSelectedItems(selected);
+  };
 
   useEffect(() => {
     (async () => {
@@ -72,30 +81,9 @@ function App() {
               type={type}
               items={items}
               selectedItem={selectedItems.get(type)}
+              onItemSelect={handleItemSelect}
             />
           );
-
-          // return (
-          //   <div key={type + index}>
-          //     <h2>{type}</h2>
-          //     {items?.map((item, index) => {
-          //       const selected = selectedItems.get(type) === item;
-          //       return (
-          //         <div>
-          //           <SingleItem
-          //             item={item}
-          //             selected={selected}
-          //             onSelect={(item: Item) => {
-          //               setSelectedItems(
-          //                 new Map(selectedItems).set(type, selected ? null : item)
-          //               );
-          //             }}
-          //           />
-          //         </div>
-          //       );
-          //     })}
-          //   </div>
-          // );
         })}
       </div>
       <h3>
