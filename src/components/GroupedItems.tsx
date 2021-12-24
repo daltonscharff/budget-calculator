@@ -8,7 +8,17 @@ type Props = {
   selectedItem?: Item;
 };
 
+function itemSort(type: string, a: Item, b: Item): number {
+  if (type === "LIGHTING") {
+    const aNum = parseInt(a.name.split(/-|\+/)[0]);
+    const bNum = parseInt(b.name.split(/-|\+/)[0]);
+    return aNum - bNum;
+  }
+  return a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1;
+}
+
 function GroupedItems({ type, items, onItemSelect, selectedItem }: Props) {
+  items.sort((a, b) => itemSort(type, a, b));
   return (
     <div key={type}>
       <h1 className="font-bold text-2xl mb-2">{type.replaceAll("_", " ")}:</h1>
