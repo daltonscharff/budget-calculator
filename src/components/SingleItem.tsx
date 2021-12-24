@@ -17,8 +17,8 @@ function displayCurrency(price: number): string {
 function SingleItem({ item, onSelect, selected }: Props) {
   return (
     <div
-      className={`p-8 text-center border-2 rounded-lg box-shadow ${
-        selected ? "border-sky-500" : "border-slate-200"
+      className={`p-8 text-center border-2 rounded-lg shadow hover:shadow-md cursor-pointer ${
+        selected ? "border-sky-500" : ""
       }`}
       onClick={() => {
         onSelect(item);
