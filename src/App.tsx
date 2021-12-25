@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getItems, Item } from "./store/firebase";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ItemPage from "./pages/ItemPage";
+import ItemPage from "./pages/ItemsPage";
 import BudgetInputPage from "./pages/BudgetInputPage";
 import "./App.css";
 import PageNotFound from "./pages/PageNotFound";
