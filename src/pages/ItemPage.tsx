@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Item } from "../store/firebase";
 import displayCurrency from "../utils/displayCurrency";
-import GroupedItems from "./GroupedItems";
-import StickyFooterLayout from "./StickyFooterLayout";
+import GroupedItems from "../components/GroupedItems";
+import StickyFooterLayout from "../components/StickyFooterLayout";
 
 type Props = {
   items: Item[];
