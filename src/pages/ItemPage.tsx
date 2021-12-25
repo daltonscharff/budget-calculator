@@ -6,7 +6,6 @@ import StickyFooterLayout from "../components/StickyFooterLayout";
 
 type Props = {
   items: Item[];
-  budget: string;
   selectedItems: Map<string, Item>;
   setSelectedItems: React.Dispatch<React.SetStateAction<Map<string, Item>>>;
   priceRange: { low: number; high: number };
@@ -14,7 +13,6 @@ type Props = {
 
 function ItemPage({
   items,
-  budget,
   priceRange,
   selectedItems,
   setSelectedItems,
@@ -58,7 +56,7 @@ function ItemPage({
   );
   return (
     <StickyFooterLayout footer={footer}>
-      <div className="container mx-auto px-4 flex flex-col gap-8">
+      <div className="container mx-auto p-4 flex flex-col gap-8">
         {Array.from(itemsByType.keys()).map((type, index) => {
           const items = itemsByType.get(type) || [];
 

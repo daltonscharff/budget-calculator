@@ -2,11 +2,13 @@ import { useState, useEffect } from "react";
 import { getItems, Item } from "./store/firebase";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ItemPage from "./pages/ItemPage";
+import BudgetInputPage from "./pages/BudgetInputPage";
 import "./App.css";
+import PageNotFound from "./pages/PageNotFound";
 
 function App() {
   const [items, setItems] = useState([] as Item[]);
-  const [budget, setBudget] = useState("");
+  const [budget, setBudget] = useState(0);
   const [selectedItems, setSelectedItems] = useState(new Map<string, Item>());
   const [priceRange, setPriceRange] = useState({ low: 0, high: 0 });
 
@@ -42,13 +44,15 @@ function App() {
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
-        <Route path="/" element={<div>Hello from Index</div>} />
+        <Route
+          path="/"
+          element={<BudgetInputPage budget={budget} setBudget={setBudget} />}
+        />
         <Route
           path="/items"
           element={
             <ItemPage
               items={items}
-              budget={budget}
               selectedItems={selectedItems}
               setSelectedItems={setSelectedItems}
               priceRange={priceRange}
@@ -56,24 +60,9 @@ function App() {
           }
         />
         <Route path="/summary" element={<div>Hello from Summary</div>} />
-        <Route path="*" element={<div>Hello from Error</div>} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
-    // <div>
-    //   {/* <input
-    //     type="number"
-    //     placeholder="Budget"
-    //     value={budget}
-    //     onChange={(event) => setBudget(event.target.value)}
-    //   /> */}
-    //   <ItemPage
-    //     items={items}
-    //     budget={budget}
-    //     selectedItems={selectedItems}
-    //     setSelectedItems={setSelectedItems}
-    //     priceRange={priceRange}
-    //   />
-    // </div>
   );
 }
 
