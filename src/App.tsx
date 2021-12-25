@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getItems, Item } from "./store";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ItemPage from "./components/ItemPage";
 import "./App.css";
 
@@ -39,21 +40,40 @@ function App() {
   }, [selectedItems]);
 
   return (
-    <div>
-      {/* <input
-        type="number"
-        placeholder="Budget"
-        value={budget}
-        onChange={(event) => setBudget(event.target.value)}
-      /> */}
-      <ItemPage
-        items={items}
-        budget={budget}
-        selectedItems={selectedItems}
-        setSelectedItems={setSelectedItems}
-        priceRange={priceRange}
-      />
-    </div>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <Routes>
+        <Route path="/" element={<div>Hello from Index</div>} />
+        <Route
+          path="/items"
+          element={
+            <ItemPage
+              items={items}
+              budget={budget}
+              selectedItems={selectedItems}
+              setSelectedItems={setSelectedItems}
+              priceRange={priceRange}
+            />
+          }
+        />
+        <Route path="/summary" element={<div>Hello from Summary</div>} />
+        <Route path="*" element={<div>Hello from Error</div>} />
+      </Routes>
+    </BrowserRouter>
+    // <div>
+    //   {/* <input
+    //     type="number"
+    //     placeholder="Budget"
+    //     value={budget}
+    //     onChange={(event) => setBudget(event.target.value)}
+    //   /> */}
+    //   <ItemPage
+    //     items={items}
+    //     budget={budget}
+    //     selectedItems={selectedItems}
+    //     setSelectedItems={setSelectedItems}
+    //     priceRange={priceRange}
+    //   />
+    // </div>
   );
 }
 
