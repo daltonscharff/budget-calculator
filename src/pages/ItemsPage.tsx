@@ -57,19 +57,23 @@ function ItemPage({
   return (
     <StickyFooterLayout footer={footer}>
       <div className="container mx-auto p-4 flex flex-col gap-8">
-        <div className="text-3xl">Choose items to include in your design:</div>
-        {Array.from(itemsByType.keys()).map((type, index) => {
-          const items = itemsByType.get(type) || [];
+        <div className="text-3xl text-center italic">
+          Choose items to include in your design
+        </div>
+        {Array.from(itemsByType.keys())
+          .sort()
+          .map((type, index) => {
+            const items = itemsByType.get(type) || [];
 
-          return (
-            <GroupedItems
-              type={type}
-              items={items}
-              selectedItem={selectedItems.get(type)}
-              onItemSelect={handleItemSelect}
-            />
-          );
-        })}
+            return (
+              <GroupedItems
+                type={type}
+                items={items}
+                selectedItem={selectedItems.get(type)}
+                onItemSelect={handleItemSelect}
+              />
+            );
+          })}
       </div>
     </StickyFooterLayout>
   );
