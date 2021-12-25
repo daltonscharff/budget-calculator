@@ -30,7 +30,7 @@ function BudgetInputPage(props: Props) {
         <div className="uppercase text-2xl font-extrabold">What is your</div>
         <div className="uppercase text-6xl font-extrabold">Budget?</div>
         <div className="my-6 flex">
-          <span className="text-2xl mr-2 text-gray-400 flex-grow-0 font-extrabold">
+          <span className="text-2xl mr-2 text-gray-200 flex-grow-0 font-extrabold">
             $
           </span>
           <input
