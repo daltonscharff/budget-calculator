@@ -1,4 +1,4 @@
-import { Item } from "../store";
+import { Item } from "../store/firebase";
 import displayCurrency from "../utils/displayCurrency";
 
 type Props = {
