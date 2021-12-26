@@ -5,6 +5,7 @@ import GroupedItems from "../components/GroupedItems";
 import StickyFooterLayout from "../components/StickyFooterLayout";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
+import Layout from "../components/Layout";
 
 type Props = {
   items: Item[];
@@ -46,9 +47,9 @@ function ItemPage({
     setItemsByType(itemsByType);
   }, [items]);
   const footer = (
-    <div className="flex flex-wrap p-4 border-t-2 items-center gap-4">
+    <Layout className="flex flex-wrap border-t-2 items-center gap-4">
       <div className="grow">
-        <span className="uppercase font-extrabold">Estimated Cost:&nbsp;</span>
+        <span className="uppercase font-extrabold mr-2">Estimated Cost:</span>
         <span>
           {priceRange.low === priceRange.high
             ? `${displayCurrency(priceRange.low)}`
@@ -68,11 +69,11 @@ function ItemPage({
           </Button>
         </div>
       </div>
-    </div>
+    </Layout>
   );
   return (
     <StickyFooterLayout footer={footer}>
-      <div className="container mx-auto p-4 flex flex-col gap-8">
+      <Layout container className="flex flex-col gap-8">
         <div className="text-3xl text-center font-extrabold uppercase">
           Select items for your design
         </div>
@@ -90,7 +91,7 @@ function ItemPage({
               />
             );
           })}
-      </div>
+      </Layout>
     </StickyFooterLayout>
   );
 }
