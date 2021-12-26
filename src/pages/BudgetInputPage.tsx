@@ -32,7 +32,7 @@ function BudgetInputPage(props: Props) {
       <div>
         <div className="uppercase text-2xl font-extrabold">What's your</div>
         <div className="uppercase text-6xl font-extrabold">Budget?</div>
-        <div className="my-6 flex">
+        <div className="my-6 flex border-b-2">
           <span className="text-2xl mr-2 text-gray-200 flex-grow-0 font-extrabold">
             $
           </span>
@@ -41,7 +41,7 @@ function BudgetInputPage(props: Props) {
             name="budget"
             value={budget}
             onChange={(event) => setBudget(event.target.value)}
-            className="border-b-2 text-right text-2xl w-40 grow"
+            className="text-right text-2xl w-40 grow"
             autoFocus
             maxLength={10}
             pattern={"[0-9,]+.?[0-9]+"}

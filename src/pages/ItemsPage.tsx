@@ -81,9 +81,9 @@ function ItemPage({
           .sort()
           .map((type, index) => {
             const items = itemsByType.get(type) || [];
-
             return (
               <GroupedItems
+                key={type + index}
                 type={type}
                 items={items}
                 selectedItem={selectedItems.get(type)}
