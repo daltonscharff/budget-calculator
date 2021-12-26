@@ -1,46 +1,25 @@
-# Getting Started with Create React App
+# Budget Calculator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A budget calculator, built with React, which connects to an existing Google Firebase/Firestore project. This simple application provides the user with a place to input their desired budget, choose from a list of items to place into a design, and an estimated price range of the items that they have selected.
 
-## Available Scripts
+## Objectives
+- [x] Create a new repository through GitHub or Bitbucket.
+- [x] Start the user experience by prompting the client to enter a budget for their project.
+- [x] Query the budget elements from the firebase firestore collection called "items".
+- [x] Display the queried items in a list grouped by type (see item interface below). Only one item per type may be selected at any given time.
+- [x] Each item has a low and high price. These prices should be displayed to the user as well as an aggregate price range of all selected items.
+- [x] The application should inform the user whether their budget is over, under, or within the range of the items that they have selected.
+- [x] Add functionality that allows the user to submit their checklist. Store this information however you would like in firestore.
 
-In the project directory, you can run:
+## Development
+To begin developing locally, navigate to the project directory and run the following script:
+```
+yarn install
+yarn start
+```
+This should start a development server at http://localhost:3000/budget-calculator
 
-### `yarn start`
+## Production Deployment
+The `deploy.yaml` workflow automatically builds and deploys this project to GitHub Pages when changes are made to the main branch.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+https://daltonscharff.github.io/budget-calculator/
