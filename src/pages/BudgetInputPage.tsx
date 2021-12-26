@@ -41,7 +41,7 @@ function BudgetInputPage(props: Props) {
             name="budget"
             value={budget}
             onChange={(event) => setBudget(event.target.value)}
-            className="text-right text-2xl w-40 grow"
+            className="text-right text-2xl w-40 grow focus:outline-none"
             autoFocus
             maxLength={10}
             pattern={"[0-9,]+.?[0-9]+"}

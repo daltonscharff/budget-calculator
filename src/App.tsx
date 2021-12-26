@@ -3,9 +3,9 @@ import { getItems, Item } from "./store/firebase";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ItemPage from "./pages/ItemsPage";
 import BudgetInputPage from "./pages/BudgetInputPage";
-import "./App.css";
 import PageNotFound from "./pages/PageNotFound";
 import SummaryPage from "./pages/SummaryPage";
+import "./App.css";
 
 function App() {
   const [items, setItems] = useState([] as Item[]);
