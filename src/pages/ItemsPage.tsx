@@ -45,20 +45,25 @@ function ItemPage({
   }, [items]);
 
   const footer = (
-    <div className="p-4 border-t-2">
-      Estimated Cost:&nbsp;
-      {priceRange.low === priceRange.high
-        ? `${displayCurrency(priceRange.low)}`
-        : `${displayCurrency(priceRange.low)} - ${displayCurrency(
-            priceRange.high
-          )}`}
+    <div className="flex p-4 border-t-2">
+      <div className="grow">
+        <span className="uppercase font-extrabold">Estimated Cost:&nbsp;</span>
+        <span>
+          {priceRange.low === priceRange.high
+            ? `${displayCurrency(priceRange.low)}`
+            : `${displayCurrency(priceRange.low)} - ${displayCurrency(
+                priceRange.high
+              )}`}
+        </span>
+      </div>
+      <div></div>
     </div>
   );
   return (
     <StickyFooterLayout footer={footer}>
       <div className="container mx-auto p-4 flex flex-col gap-8">
-        <div className="text-3xl text-center italic">
-          Choose items to include in your design
+        <div className="text-3xl text-center font-extrabold uppercase">
+          Select items for your design
         </div>
         {Array.from(itemsByType.keys())
           .sort()
