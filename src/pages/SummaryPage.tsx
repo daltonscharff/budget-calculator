@@ -2,7 +2,11 @@ import { FormEvent, useEffect, useState } from "react";
 import Button from "../components/Button";
 import Layout from "../components/Layout";
 import Statistic from "../components/Statistic";
-import { Item } from "../store/firebase";
+import {
+  getBudgetResponses,
+  Item,
+  postBudgetResponse,
+} from "../store/firebase";
 import displayCurrency from "../utils/displayCurrency";
 
 const statusConfig = {
@@ -52,8 +56,13 @@ function SummaryPage({ budget, priceRange, selectedItems }: Props) {
   const [status, setStatus] = useState("default" as Status);
   const [buttonText, setButtonText] = useState("Submit");
 
-  const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    await postBudgetResponse({
+      budget,
+      items: Array.from(selectedItems.values()),
+    });
+    console.log(await getBudgetResponses());
     setButtonText("Submitted");
   };
 
