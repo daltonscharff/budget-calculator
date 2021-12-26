@@ -3,6 +3,8 @@ import { Item } from "../store/firebase";
 import displayCurrency from "../utils/displayCurrency";
 import GroupedItems from "../components/GroupedItems";
 import StickyFooterLayout from "../components/StickyFooterLayout";
+import Button from "../components/Button";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   items: Item[];
@@ -18,6 +20,7 @@ function ItemPage({
   setSelectedItems,
 }: Props) {
   const [itemsByType, setItemsByType] = useState(new Map<string, Item[]>());
+  const navigate = useNavigate();
 
   const handleItemSelect = (item: Item) => {
     const isSelected = selectedItems.get(item.type) === item;
@@ -41,11 +44,9 @@ function ItemPage({
       }
     }
     setItemsByType(itemsByType);
-    setSelectedItems(new Map<string, Item>());
   }, [items]);
-
   const footer = (
-    <div className="flex p-4 border-t-2">
+    <div className="flex flex-wrap p-4 border-t-2 items-center gap-4">
       <div className="grow">
         <span className="uppercase font-extrabold">Estimated Cost:&nbsp;</span>
         <span>
@@ -56,7 +57,17 @@ function ItemPage({
               )}`}
         </span>
       </div>
-      <div></div>
+      <div className="grow w-40">
+        <div
+          onClick={() => {
+            navigate("/summary");
+          }}
+        >
+          <Button disabled={Array.from(selectedItems.entries()).length === 0}>
+            Continue
+          </Button>
+        </div>
+      </div>
     </div>
   );
   return (

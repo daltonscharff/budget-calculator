@@ -5,6 +5,7 @@ import ItemPage from "./pages/ItemsPage";
 import BudgetInputPage from "./pages/BudgetInputPage";
 import "./App.css";
 import PageNotFound from "./pages/PageNotFound";
+import SummaryPage from "./pages/SummaryPage";
 
 function App() {
   const [items, setItems] = useState([] as Item[]);
@@ -59,7 +60,16 @@ function App() {
             />
           }
         />
-        <Route path="/summary" element={<div>Hello from Summary</div>} />
+        <Route
+          path="/summary"
+          element={
+            <SummaryPage
+              budget={budget}
+              priceRange={priceRange}
+              selectedItems={selectedItems}
+            />
+          }
+        />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>

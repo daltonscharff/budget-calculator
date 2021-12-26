@@ -9,15 +9,16 @@ type Props = {
 
 function BudgetInputPage(props: Props) {
   const [budget, setBudget] = useState(
-    props.budget === 0 ? "" : props.budget.toString()
+    props.budget === 0 ? "" : (props.budget / 100).toString()
   );
   const navigate = useNavigate();
 
   const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const budgetClean = budget.replaceAll(",", "");
-    const budgetNum = parseFloat(budgetClean);
+    let budgetNum = parseFloat(budgetClean);
     if (!isNaN(budgetNum)) {
+      budgetNum = Math.round(budgetNum * 100);
       props.setBudget(budgetNum);
       navigate("/items");
     }
@@ -48,7 +49,7 @@ function BudgetInputPage(props: Props) {
             placeholder="50,000"
           />
         </div>
-        <Button>Begin</Button>
+        <Button className="px-8 py-4 mt-12">Begin</Button>
       </div>
     </form>
   );
