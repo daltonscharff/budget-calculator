@@ -50,7 +50,8 @@ function BudgetInputPage(props: Props) {
               onChange={(event) => setBudget(event.target.value)}
               className="text-right text-2xl w-40 grow focus:outline-none"
               autoFocus
-              maxLength={10}
+              maxLength={12}
+              title="a positive number greater than 0"
               pattern={"[1-9][0-9,]*.?[0-9]*"}
               required
               placeholder="50,000"
