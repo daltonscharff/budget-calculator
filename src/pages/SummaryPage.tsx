@@ -98,6 +98,7 @@ function SummaryPage({ budget, priceRange, selectedItems }: Props) {
             </Statistic>
             <Statistic label="Your Budget">{displayCurrency(budget)}</Statistic>
           </div>
+          {/* An improvement to this page may be to add a table of each item selected as well as a button to remove that item. This would allow users to remove selected items more easily if over budget. */}
           <Button
             disabled={buttonText == "Submitted"}
             className={`px-8 py-4 mt-8 ${statusConfig[status].colors.button}`}
