@@ -78,8 +78,11 @@ function ItemPage({
   return (
     <StickyFooterLayout footer={footer}>
       <Layout container className="flex flex-col gap-8">
-        <div className="text-3xl text-center font-extrabold uppercase">
-          Select items for your design
+        <div className="text-center">
+          <div className="text-3xl text-center font-extrabold uppercase">
+            Select items for your design
+          </div>
+          <div className="italic font-light">Up to one item per category</div>
         </div>
         {Array.from(itemsByType.keys())
           .sort()
