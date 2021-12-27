@@ -8,6 +8,7 @@ import {
 } from "firebase/firestore/lite";
 import config from "../config.json";
 
+// config is located in config.json, making it easier to change if the need arises
 const firebaseConfig = config.firebase;
 
 const app = initializeApp(firebaseConfig);

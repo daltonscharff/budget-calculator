@@ -9,6 +9,8 @@ type Props = {
 };
 
 function itemSort(type: string, a: Item, b: Item): number {
+  /* items with type LIGHTING have names that are string,
+    but represent numbers, so they require a special sorting algorithm */
   if (type === "LIGHTING") {
     const aNum = parseInt(a.name.split(/-|\+/)[0]);
     const bNum = parseInt(b.name.split(/-|\+/)[0]);

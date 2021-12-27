@@ -34,6 +34,10 @@ function ItemPage({
     setSelectedItems(selected);
   };
 
+  /**
+   * itemsByType sacrifices memory in exchange for a
+   * faster and simpler way to query items by type
+   */
   useEffect(() => {
     const itemsByType = new Map<string, Item[]>();
     for (let item of items) {

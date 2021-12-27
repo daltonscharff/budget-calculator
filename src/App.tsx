@@ -12,6 +12,10 @@ function App() {
   const [selectedItems, setSelectedItems] = useState(new Map<string, Item>());
   const [priceRange, setPriceRange] = useState({ low: 0, high: 0 });
 
+  /**
+   * Filters repeated items in data store. There was no ID to differentiate
+   * between these items, so I filtered them out.
+   */
   useEffect(() => {
     (async () => {
       const items = await getItems();
@@ -28,6 +32,10 @@ function App() {
     })();
   }, []);
 
+  /**
+   * Recalculates high and low cost estimates every time an
+   * item is selected or deselected
+   */
   useEffect(() => {
     const items = Array.from(selectedItems.values());
     const low = items.reduce(
@@ -43,6 +51,7 @@ function App() {
 
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
+      {/* React router allows for different pages. For a larger project, I would have recommended Next.js and passed state between pages via query params or the use of a global state manager like the React Context API. */}
       <Routes>
         <Route
           path="/"
