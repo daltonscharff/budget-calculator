@@ -36,6 +36,7 @@ export async function getItems(): Promise<Item[]> {
 export async function postBudgetResponse(
   budgetResponse: BudgetResponse
 ): Promise<string> {
+  /* uses setDoc vs addDoc because I didn't want to add a bunch of entries to this database during testing */
   const myDoc = doc(db, "daltonScharffBudgetResponses", "abc123");
   const docRef = await setDoc(myDoc, budgetResponse);
   return "abc123";

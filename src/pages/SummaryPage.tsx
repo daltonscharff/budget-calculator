@@ -63,6 +63,7 @@ function SummaryPage({ budget, priceRange, selectedItems }: Props) {
       budget,
       items: Array.from(selectedItems.values()),
     });
+    // prints budgetResponses to see that value updated
     console.log(await getBudgetResponses());
   };
 
