@@ -58,12 +58,12 @@ function SummaryPage({ budget, priceRange, selectedItems }: Props) {
 
   const handleFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setButtonText("Submitted");
     await postBudgetResponse({
       budget,
       items: Array.from(selectedItems.values()),
     });
     console.log(await getBudgetResponses());
-    setButtonText("Submitted");
   };
 
   useEffect(() => {

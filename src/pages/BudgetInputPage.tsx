@@ -30,8 +30,12 @@ function BudgetInputPage(props: Props) {
       className="mx-auto min-h-screen flex flex-col justify-center items-center text-left"
     >
       <div>
-        <div className="uppercase text-2xl font-extrabold">What's your</div>
-        <div className="uppercase text-6xl font-extrabold">Budget?</div>
+        <div className="uppercase text-2xl font-extrabold text-center">
+          What's your
+        </div>
+        <div className="uppercase text-6xl font-extrabold text-center">
+          Budget?
+        </div>
         <div className="my-6 flex border-b-2">
           <span className="text-2xl mr-2 text-gray-200 flex-grow-0 font-extrabold">
             $
@@ -44,7 +48,7 @@ function BudgetInputPage(props: Props) {
             className="text-right text-2xl w-40 grow focus:outline-none"
             autoFocus
             maxLength={10}
-            pattern={"[0-9,]+.?[0-9]+"}
+            pattern={"[1-9][0-9,]*.?[0-9]*"}
             required
             placeholder="50,000"
           />

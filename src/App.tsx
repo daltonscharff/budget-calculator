@@ -48,27 +48,33 @@ function App() {
           path="/"
           element={<BudgetInputPage budget={budget} setBudget={setBudget} />}
         />
-        <Route
-          path="/items"
-          element={
-            <ItemPage
-              items={items}
-              selectedItems={selectedItems}
-              setSelectedItems={setSelectedItems}
-              priceRange={priceRange}
+
+        {/* Prevents users from navigating directly to items or summary page */}
+        {budget > 0 && (
+          <>
+            <Route
+              path="/items"
+              element={
+                <ItemPage
+                  items={items}
+                  selectedItems={selectedItems}
+                  setSelectedItems={setSelectedItems}
+                  priceRange={priceRange}
+                />
+              }
             />
-          }
-        />
-        <Route
-          path="/summary"
-          element={
-            <SummaryPage
-              budget={budget}
-              priceRange={priceRange}
-              selectedItems={selectedItems}
+            <Route
+              path="/summary"
+              element={
+                <SummaryPage
+                  budget={budget}
+                  priceRange={priceRange}
+                  selectedItems={selectedItems}
+                />
+              }
             />
-          }
-        />
+          </>
+        )}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
